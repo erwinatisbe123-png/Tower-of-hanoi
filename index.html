@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tower of Hanoi — powered by Prolog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🗼 Tower of Hanoi</h1>
+    <p class="tag">Puzzle logic powered by <strong>SWI-Prolog</strong></p>
+    <span id="status" class="badge off">Connecting to Prolog…</span>
+  </header>
+
+  <main>
+    <section class="panel controls">
+      <label>Disks
+        <select id="diskCount"></select>
+      </label>
+      <button id="btnReset">Reset</button>
+      <button id="btnSolve" class="primary">Auto-Solve</button>
+      <button id="btnPause" disabled>Pause</button>
+      <button id="btnRestart" disabled>Restart Solution</button>
+      <label>Speed
+        <input id="speed" type="range" min="1" max="10" value="6">
+      </label>
+    </section>
+
+    <section class="panel stats">
+      <div><span>Moves</span><b id="moves">0</b></div>
+      <div><span>Minimum</span><b id="minMoves">0</b></div>
+      <div><span>Time</span><b id="time">00:00</b></div>
+    </section>
+
+    <div id="message" class="message">Click a tower to pick up its top disk, then click where to put it.</div>
+
+    <section id="board" class="board" aria-label="Tower of Hanoi board">
+      <div class="tower" data-index="0"><div class="rod"></div><div class="stack"></div><div class="label">Source</div></div>
+      <div class="tower" data-index="1"><div class="rod"></div><div class="stack"></div><div class="label">Auxiliary</div></div>
+      <div class="tower" data-index="2"><div class="rod"></div><div class="stack"></div><div class="label">Destination</div></div>
+    </section>
+
+    <section class="panel rules">
+      <h2>Rules</h2>
+      <ol>
+        <li>Move only one disk at a time.</li>
+        <li>Only the top disk of a tower can be moved.</li>
+        <li>A larger disk may never sit on a smaller disk.</li>
+      </ol>
+      <p>Goal: move the whole stack from <em>Source</em> to <em>Destination</em>.
+         Every move you make is checked by Prolog. You can also drag the top disk to another tower.</p>
+    </section>
+  </main>
+
+  <footer>Logic engine: SWI-Prolog · Interface: HTML, CSS, JavaScript</footer>
+
+  <div id="win" class="win hidden" role="dialog">
+    <div class="card">
+      <h2>🎉 Congratulations!</h2>
+      <p id="winText"></p>
+      <button id="winClose" class="primary">Play again</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
